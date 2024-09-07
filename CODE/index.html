@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Develop_Maps_for_Parliamentry_and Assembly_Constituencies</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v9.2.4/ol.css">
+    <script src="https://cdn.jsdelivr.net/npm/ol@v9.2.4/dist/ol.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="title">
+        <h1>Parliamentary and Assembly Contituency Map of India</h1>
+    </div>
+    <div class="radio">
+        <label class="radio-style">Select Layer</label>
+        <label><input type="radio" name="layer" value="map_PC" onclick="applyMap()">Parliamentary Constituencies</label>
+        <label><input type="radio" name="layer" value="map_AC" onclick="applyMap()">Assembly Constituencies</label>
+    </div>
+
+    <div class="state" style="align-self: center;">
+        <label for="filterST" class="state1">Select State</label>
+        <select onchange="applyFilterST()" id="filterST">
+        </select>
+    </div>
+
+    <div class="party" style="align-self: center;">
+        <label for="filterPT" class="party1">Select Party Name</label>
+        <select onchange="applyFilterPT()" id="filterPT">
+        </select>
+    </div>
+
+    <div class="reserve" style="align-self: center;">
+        <label for="filterRS" class="reserve1">Select Reservation Category</label>
+        <select onchange="applyFilterRS()" id="filterRS">
+        </select>
+    </div>
+
+    <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer">✖</a>
+        <div id="popup-content"></div>
+    </div>
+
+    <button class="clear-filter" onclick="clearFilters()">Clear Filters</button>
+
+    <div class="mapstyle" id="map_PC"></div>
+    <div class="mapstyle" id="map_AC"></div>
+
+    <script src="ac.js"></script>
+    <script src="pc.js"></script>
+    <script src="general.js"></script>
+
+
+    <div id="legend" class="legend hidden">
+        <div class="legend-item">
+            <span class="symbol" style="background-color: #ff7f00 ;"></span>
+            BJP
+        </div>
+        <div class="legend-item">
+            <span class="symbol" style="background-color: #33a02c;"></span>
+            INC
+        </div>
+        <div class="legend-item">
+            <span class="symbol" style="background-color: #ffcace"></span>
+            AITC
+        </div>
+        <div class="legend-item">
+            <span class="symbol" style="background-color: #dc71ce;"></span>
+            DMK
+        </div>
+        <div class="legend-item">
+            <span class="symbol" style="background-color: #2b2f6e;"></span>
+            YSRCP
+        </div>
+        <div class="legend-item">
+            <span class="symbol" style="background-color: #43cbfc;"></span>
+            CPM
+        </div>
+        <div class="legend-item">
+            <span class="symbol" style="background-color: #e31a1c;"></span>
+            Awaited
+        </div>
+        <div class="legend-item">
+            <span class="symbol" style="background-color: #e1ee26;"></span>
+            OTHER PARTY
+        </div>
+    </div>
+
+    <button id="toggleLegendButton" class="toggle-legend-button hide-legend">Show Legend</button>
+
+    <script>
+        document.getElementById('toggleLegendButton').addEventListener('click', function () {
+            var legend = document.getElementById('legend');
+            var button = document.getElementById('toggleLegendButton');
+
+            if (legend.classList.contains('hidden')) {
+                legend.classList.remove('hidden');
+                button.textContent = 'Hide Legend';
+                button.classList.remove('hide-legend');
+                button.classList.add('show-legend');
+            } else {
+                legend.classList.add('hidden');
+                button.textContent = 'Show Legend';
+                button.classList.remove('show-legend');
+                button.classList.add('hide-legend');
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
