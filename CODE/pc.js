@@ -16,7 +16,7 @@ var map_PC = new ol.Map({
 var geoserverLayerSourcePC = new ol.source.TileWMS({
     url: 'http://localhost:8080/geoserver/project/wms',
     params: {
-        'LAYERS': 'project:india_pc_2019',
+        'LAYERS': 'project:india_pc_2019_',
         'TILED': true
     }
 });
